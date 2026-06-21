@@ -1,0 +1,17 @@
+<sly data-sly-use.clientlibs="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlibs.css @ categories='employee-libs'}"/>
+
+
+
+<div class="employee-container">
+    <h2 class="employee-title">Employee Directory</h2>
+
+    <div id="employee-list" class="employee-grid">
+        <div class="loading">Loading employees...</div>
+    </div>
+</div>
+
+
+
+<sly data-sly-use.clientlibs="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlibs.js @ categories='employee-libs'}"/>

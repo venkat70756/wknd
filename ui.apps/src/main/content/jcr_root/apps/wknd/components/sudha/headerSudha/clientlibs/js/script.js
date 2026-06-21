@@ -1,0 +1,1 @@
+console.log("hi this log is coming from the header compoent js file");

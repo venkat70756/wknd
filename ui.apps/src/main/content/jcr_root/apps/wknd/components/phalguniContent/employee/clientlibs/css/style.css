@@ -1,0 +1,67 @@
+.employee-container {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.employee-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+.employee-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.employee-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.employee-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.employee-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #1473e6;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.employee-info h3 {
+    margin: 0 0 12px;
+    color: #1473e6;
+}
+
+.employee-info p {
+    margin: 8px 0;
+    color: #555;
+}
+
+.loading,
+.error {
+    text-align: center;
+    font-size: 18px;
+    padding: 30px;
+}
+
+.error {
+    color: red;
+}
