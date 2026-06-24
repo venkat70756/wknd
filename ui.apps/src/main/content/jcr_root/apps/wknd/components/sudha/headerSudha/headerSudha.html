@@ -4,12 +4,12 @@
 
 <header>
     <ul>
-        <li><a href="#" alt="registerbutton">Register </a></li>
-        <li><a href="#" alt="logonbutton"><i class="fas fa-user-alt"></i> Login</a></li>
+        <li><a href="#" alt="registerbutton">${properties.registerText} </a></li>
+        <li><a href="#" alt="logonbutton"><i class="fas fa-user-alt"></i> ${properties.loginText}</a></li>
     </ul>
 
     <h5>
-        +880166 253 232 <a href="mailto:engsahaly@gmail.com?subject=Hello!">info@domain.com</a>
+        ${properties.mobileNumber} || <a href="mailto:engsahaly@gmail.com?subject=Hello!">${properties.email}</a>
     </h5>
 
 </header>
@@ -27,8 +27,8 @@
         <li><a href="#" alt="homepage">contact</a></li>
     </ul>
 
-    <h1>
-        <i class="fab fa-angrycreative"></i>
-        Wiser <span class="normalclass"> University </span>
+    <h1 data-sly-test="${properties.universityName && properties.mobileNumber}">
+
+        Venkat:${properties.universityName}
     </h1>
 </nav>
