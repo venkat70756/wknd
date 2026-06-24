@@ -1,22 +1,24 @@
-<sly data-sly-use.clientlibs="/libs/granite/sightly/templates/clientlib.html"/>
-<sly data-sly-call="${clientlibs.css @ categories='demo-libs'}"/>
+<sly data-sly-use.clientlibs="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlibs.css @ categories='demo-libs'}" />
+
+<sly data-sly-use.model="com.adobe.aem.guides.wknd.core.models.DemoModel">
+
+  <header class="p-site-header">
+    <div class="p-site-identity">
+      <h1><a href="#">${model.heading}</a> <sub>${model.subTitle}</sub></h1>
+    </div>
+    <nav class="p-site-navigation">
+      <ul class="p-nav">
+        <li><a href="#">About</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+</sly>
 
 
 
-<header class="p-site-header">
-  <div class="p-site-identity">
-    <h1><a href="#">${properties.heading}</a></h1>
-  </div>  
-  <nav class="p-site-navigation">
-    <ul class="p-nav">
-      <li><a href="#">About</a></li> 
-      <li><a href="#">News</a></li> 
-      <li><a href="#">Contact</a></li> 
-    </ul>
-  </nav>
-</header>
-
-
-
-<sly data-sly-use.clientlibs="/libs/granite/sightly/templates/clientlib.html"/>
-<sly data-sly-call="${clientlibs.js @ categories='demo-libs'}"/>
+<sly data-sly-use.clientlibs="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlibs.js @ categories='demo-libs'}" />
