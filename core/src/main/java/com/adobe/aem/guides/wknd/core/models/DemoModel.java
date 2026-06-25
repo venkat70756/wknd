@@ -1,5 +1,8 @@
 package com.adobe.aem.guides.wknd.core.models;
 
+import java.util.List;
+
+import com.adobe.aem.guides.wknd.core.models.impl.DemoMultiModel;
 
 public interface DemoModel {
 
@@ -8,6 +11,8 @@ public interface DemoModel {
     public String getHeading();
 
     public String getSubTitle();
+
+    public List<DemoMultiModel> getHeadingTabs();
 
 }
 
@@ -21,4 +26,7 @@ public interface DemoModel {
 * with the help of implements keyword we have to establish the connection between interface and class.
 * 
 * @ValueMapValue annotation we can define the variablles.
+
+List<String>
+
 */
