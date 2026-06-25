@@ -1,34 +1,39 @@
-<sly  data-sly-use.obj="/libs/granite/sightly/templates/clientlib.html" />
-<sly  data-sly-call="${obj.all @ categories='Sudha-header-libs'}"/>
+<sly data-sly-use.obj="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${obj.all @ categories='Sudha-header-libs'}" />
 
+<sly data-sly-use.model="com.adobe.aem.guides.wknd.core.models.HeaderModel">
+    <header>
+        <ul>
+            <li><a href="#" alt="registerbutton">${model.registerText} </a></li>
+            <li><a href="#" alt="logonbutton"><i class="fas fa-user-alt"></i> ${model.loginText}</a></li>
+        </ul>
 
-<header>
-    <ul>
-        <li><a href="#" alt="registerbutton">${properties.registerText} </a></li>
-        <li><a href="#" alt="logonbutton"><i class="fas fa-user-alt"></i> ${properties.loginText}</a></li>
-    </ul>
+        <h5>
+            <!-- ${properties.mobileNumber} || <a href="mailto:engsahaly@gmail.com?subject=Hello!">${properties.email}</a> -->
+            ${model.mobileNumber} || <a href="mailto:engsahaly@gmail.com?subject=Hello!">${model.email}</a>
+            
+        </h5>
 
-    <h5>
-        ${properties.mobileNumber} || <a href="mailto:engsahaly@gmail.com?subject=Hello!">${properties.email}</a>
-    </h5>
+    </header>
 
-</header>
+    <nav>
+        <button>
+            apply now
+        </button>
 
-<nav>
-    <button>
-        apply now
-    </button>
+        <ul>
+            <li><a href="#" alt="homepage">home</a></li>
+            <li><a href="#" alt="homepage">courses</a></li>
+            <li><a href="#" alt="homepage">blog <i class="fas fa-chevron-down"></i> </a></li>
+            <li><a href="#" alt="homepage">pages <i class="fas fa-chevron-down"></i></a></li>
+            <li><a href="#" alt="homepage">contact</a></li>
+        </ul>
 
-    <ul>
-        <li><a href="#" alt="homepage">home</a></li>
-        <li><a href="#" alt="homepage">courses</a></li>
-        <li><a href="#" alt="homepage">blog <i class="fas fa-chevron-down"></i> </a></li>
-        <li><a href="#" alt="homepage">pages <i class="fas fa-chevron-down"></i></a></li>
-        <li><a href="#" alt="homepage">contact</a></li>
-    </ul>
+        <h1 data-sly-test="${model.universityName && model.mobileNumber}">
 
-    <h1 data-sly-test="${properties.universityName && properties.mobileNumber}">
+            Venkat:${model.universityName}
+        </h1>
+    </nav>
 
-        Venkat:${properties.universityName}
-    </h1>
-</nav>
+    ${model.dummyValue}
+</sly>

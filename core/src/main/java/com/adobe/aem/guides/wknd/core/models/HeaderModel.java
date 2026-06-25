@@ -11,4 +11,6 @@ public interface HeaderModel {
     public String getRegisterText();
 
     public String getUniversityName();
+
+    public String getDummyValue();
 }
