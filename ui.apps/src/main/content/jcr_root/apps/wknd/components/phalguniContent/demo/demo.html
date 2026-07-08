@@ -3,16 +3,23 @@
 
 <sly data-sly-use.model="com.adobe.aem.guides.wknd.core.models.DemoModel">
 
+    <sly data-sly-include="second.html" />
+
   <header class="p-site-header">
     <div class="p-site-identity">
-      <h1><a href="#">${model.heading}</a> <sub>${model.subTitle}</sub></h1>
+      <h1 data-sly-test="${model.heading || model.subTitle}">
+          <a href="#">${model.heading}</a> <sub>${model.subTitle}</sub>
+      </h1>
     </div>
     <nav class="p-site-navigation">
-      <ul class="p-nav">
-        <li><a href="#">About</a></li>
-        <li><a href="#">News</a></li>
-        <li><a href="#">Contact</a></li>
+      <ul class="p-nav" data-sly-list.item="${model.headingTabs}">
+        <li><a href="${item.headingLink}">${item.headingTitle}</a></li>
       </ul>
+
+<!--              <ul class="p-nav" data-sly-repeat.item="${model.headingTabs}">-->
+<!--                <li><a href="${item.headingLink}">${item.headingTitle}</a></li>-->
+<!--              </ul>-->
+
     </nav>
   </header>
 
@@ -22,3 +29,12 @@
 
 <sly data-sly-use.clientlibs="/libs/granite/sightly/templates/clientlib.html" />
 <sly data-sly-call="${clientlibs.js @ categories='demo-libs'}" />
+
+
+
+<!--<h1 data-sly-test="${model.heading == 'wknd'}">-->
+
+<!--<h1 data-sly-test="${model.heading && model.subTitle}">-->
+
+
+<!--<h1 data-sly-test="${model.heading || model.subTitle}">-->

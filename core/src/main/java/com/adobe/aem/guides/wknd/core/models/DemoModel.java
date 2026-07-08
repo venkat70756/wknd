@@ -28,5 +28,10 @@ public interface DemoModel {
 * @ValueMapValue annotation we can define the variablles.
 
 List<String>
+*
+*
+* if (a == 2){
+*
+* }
 
 */
