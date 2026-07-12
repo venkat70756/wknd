@@ -2,10 +2,12 @@ package com.adobe.aem.guides.wknd.core.models.impl;
 
 import java.util.List;
 
+import com.adobe.aem.guides.wknd.core.services.DemoService;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.aem.guides.wknd.core.models.DemoModel;
@@ -33,6 +35,10 @@ public class DemoModelImpl implements DemoModel{
     private List<DemoMultiModel> headingTabs;
 
 
+    @OSGiService
+    private DemoService demoService;
+
+    String name;
 
     @Override
     public String getId(){
@@ -42,11 +48,13 @@ public class DemoModelImpl implements DemoModel{
 
     @Override
     public String getHeading(){
-//        log.trace("TRACE");
-//        log.debug("Debug");
-//        log.info("Info");
-//        log.warn("Warn");
-//        log.error("Error");
+
+     demoService.getWelcome();
+
+         int a = 50;
+         int b = 100;
+
+        demoService.getAddition(a, b);
 
 
         log.info("Heading : {}", heading);
@@ -62,6 +70,14 @@ public class DemoModelImpl implements DemoModel{
     public List<DemoMultiModel> getHeadingTabs(){
 
         return headingTabs;
+    }
+
+    @Override
+    public String getTestName() {
+
+        name = demoService.getName();
+
+        return name;
     }
 
 }

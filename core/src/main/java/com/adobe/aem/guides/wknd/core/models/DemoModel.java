@@ -14,6 +14,8 @@ public interface DemoModel {
 
     public List<DemoMultiModel> getHeadingTabs();
 
+    public String getTestName();
+
 }
 
 
