@@ -1,5 +1,7 @@
 package com.adobe.aem.guides.wknd.core.servlets;
 
+import com.day.cq.replication.ReplicationActionType;
+import com.day.cq.replication.Replicator;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -8,9 +10,11 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.apache.sling.servlets.annotations.SlingServletPaths;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.jcr.Session;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
@@ -21,8 +25,11 @@ public class PagesCreationServlet  extends SlingAllMethodsServlet {
 
     private static  final Logger LOG = LoggerFactory.getLogger(PagesCreationServlet.class);
 
+    @Reference
+    Replicator replicator;
+
     @Override
-    protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException{
+    protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
 
         String templatePath = request.getParameter("templatePath");
         String pageTitle = request.getParameter("pageTitle");
@@ -33,17 +40,43 @@ public class PagesCreationServlet  extends SlingAllMethodsServlet {
 
         PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
 
-        try {
+        Session session = resourceResolver.adaptTo(Session.class);
 
-            Page page = pageManager.create(parentPagePath,pageName,templatePath,pageTitle);
+        if (templatePath != null && pageTitle != null && pageName != null && parentPagePath != null) {
 
-            resourceResolver.commit();
+            try {
 
-            LOG.info("Page Created Successfully");
+                if (pageManager != null) {
+
+                    Page page = pageManager.create(parentPagePath, pageName, templatePath, pageTitle);
+                    resourceResolver.commit();
+
+                    LOG.info("Page Created Successfully");
+
+                    if (page != null) {
+
+                        if (session != null) {
+
+                            replicator.replicate(session, ReplicationActionType.ACTIVATE, page.getPath());
+
+                            LOG.info("Page Activated Successfully");
+                        }else {
+                            LOG.error("Page not Activated");
+                        }
+                    }
+                }else {
+                    LOG.info("Page Not Created Successfully because PageManager is null");
+                }
 
 
-        }catch (Exception e){
+            } catch (Exception e) {
                 LOG.error(e.getMessage());
+            }
+        }
+        else {
+            LOG.error("Please pass all the required parameters");
+            response.setContentType("application/json");
+            response.getWriter().println("Please pass all the required parameters");
         }
     }
  }
