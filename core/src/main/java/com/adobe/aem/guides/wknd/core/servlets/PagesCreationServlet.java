@@ -9,6 +9,7 @@ import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.apache.sling.servlets.annotations.SlingServletPaths;
+import org.apache.sling.settings.SlingSettingsService;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
@@ -28,6 +29,9 @@ public class PagesCreationServlet  extends SlingAllMethodsServlet {
     @Reference
     Replicator replicator;
 
+    @Reference
+    SlingSettingsService slingSettingsService;
+
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
 
@@ -36,47 +40,52 @@ public class PagesCreationServlet  extends SlingAllMethodsServlet {
         String pageName = request.getParameter("pageName");
         String parentPagePath = request.getParameter("parentPagePath");
 
-        ResourceResolver resourceResolver = request.getResourceResolver();
+        if (slingSettingsService.getRunModes().contains("author")) {
+            ResourceResolver resourceResolver = request.getResourceResolver();
 
-        PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
+            PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
 
-        Session session = resourceResolver.adaptTo(Session.class);
+            Session session = resourceResolver.adaptTo(Session.class);
 
-        if (templatePath != null && pageTitle != null && pageName != null && parentPagePath != null) {
+            if (templatePath != null && pageTitle != null && pageName != null && parentPagePath != null) {
 
-            try {
+                try {
 
-                if (pageManager != null) {
+                    if (pageManager != null) {
 
-                    Page page = pageManager.create(parentPagePath, pageName, templatePath, pageTitle);
-                    resourceResolver.commit();
+                        Page page = pageManager.create(parentPagePath, pageName, templatePath, pageTitle);
+                        resourceResolver.commit();
 
-                    LOG.info("Page Created Successfully");
+                        LOG.info("Page Created Successfully");
 
-                    if (page != null) {
+                        if (page != null) {
 
-                        if (session != null) {
+                            if (session != null) {
 
-                            replicator.replicate(session, ReplicationActionType.ACTIVATE, page.getPath());
+                                replicator.replicate(session, ReplicationActionType.ACTIVATE, page.getPath());
 
-                            LOG.info("Page Activated Successfully");
-                        }else {
-                            LOG.error("Page not Activated");
+                                LOG.info("Page Activated Successfully");
+                            } else {
+                                LOG.error("Page not Activated");
+                            }
                         }
+                    } else {
+                        LOG.info("Page Not Created Successfully because PageManager is null");
                     }
-                }else {
-                    LOG.info("Page Not Created Successfully because PageManager is null");
+
+
+                } catch (Exception e) {
+                    LOG.error(e.getMessage());
                 }
-
-
-            } catch (Exception e) {
-                LOG.error(e.getMessage());
+            } else {
+                LOG.error("Please pass all the required parameters");
+                response.setContentType("text/html");
+                response.getWriter().println("Please pass all the required parameters");
             }
-        }
-        else {
-            LOG.error("Please pass all the required parameters");
-            response.setContentType("application/json");
-            response.getWriter().println("Please pass all the required parameters");
+        } else {
+            LOG.error("Please create the pages on the author environment");
+            response.setContentType("text/html");
+            response.getWriter().println("Please create the pages on the author environment");
         }
     }
  }
