@@ -1,1 +1,14 @@
-<h1> Hi Deva, Welcome</h1>
+
+<sly data-sly-use.venkat="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${venkat.css @ categories='demo-deva-libs'}"/>
+
+
+<h1 class="deva"> Hi ${properties.bannerTitle}, Welcome</h1>
+
+<p> ${properties.bannerDescription}</p>
+
+<img src="${properties.bannerImage}" />
+
+
+<sly data-sly-use.venkat="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${venkat.js @ categories='demo-deva-libs'}"/>
