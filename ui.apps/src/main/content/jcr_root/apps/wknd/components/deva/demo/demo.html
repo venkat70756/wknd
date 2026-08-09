@@ -3,11 +3,15 @@
 <sly data-sly-call="${venkat.css @ categories='demo-deva-libs'}"/>
 
 
-<h1 class="deva"> Hi ${properties.bannerTitle}, Welcome</h1>
+<sly data-sly-use.model="com.adobe.aem.guides.wknd.core.models.DemoDevaModel">
 
-<p> ${properties.bannerDescription}</p>
+    <h1 class="deva"> Hi ${model.bannerTitle}, Welcome</h1>
 
-<img src="${properties.bannerImage}" />
+    <p> ${model.bannerDescription}</p>
+
+    <img src="${model.bannerImage}" />
+
+</sly>
 
 
 <sly data-sly-use.venkat="/libs/granite/sightly/templates/clientlib.html"/>
