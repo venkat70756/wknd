@@ -3,9 +3,11 @@
 
 
 <div class="image-container">
-  <img src="" alt="Sample Image" class="image">
+  <img src="${properties.bannerImage}" alt="Sample Image" class="image">
   <div class="text-overlay">
-    <h2 class="avinash-heading">Your Heading Here</h2>
-    <p>This is a description text displayed over the image.</p>
+    <h2 class="avinash-heading">${properties.bannerTitle}</h2>
+    <p>${properties.bannerDescription}</p>
   </div>
 </div>
+
+${pageProperties['jcr:title']}
