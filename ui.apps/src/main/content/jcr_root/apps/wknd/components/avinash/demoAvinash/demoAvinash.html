@@ -2,12 +2,37 @@
 <sly data-sly-call="${clientlibs.all @ categories='demo-avinash-libs'}"/>
 
 
-<div class="image-container">
-  <img src="${properties.bannerImage}" alt="Sample Image" class="image">
-  <div class="text-overlay">
-    <h2 class="avinash-heading">${properties.bannerTitle}</h2>
-    <p>${properties.bannerDescription}</p>
+ <!-- <div data-sly-test="${properties.bannerImage && properties.bannerTitle}"> -->
+<div data-sly-test="${properties.bannerImage || properties.bannerTitle}"> 
+  <div class="image-container">
+  
+      <img src="${properties.bannerImage}" alt="Sample Image" class="image">
+    
+    <div class="text-overlay">
+      <h2 class="avinash-heading">${properties.bannerTitle}</h2>
+      <p>${properties.bannerDescription}</p>
+    </div>
   </div>
 </div>
 
 ${pageProperties['jcr:title']}
+
+
+<!-- 
+Logical AND
+Logical OR
+
+
+Relational Operators(==, != , > , >= , < , <=)
+
+
+checkbox filed
+colorfiled
+datepicker
+numberfiled
+...etc
+
+-->
+
+
+
