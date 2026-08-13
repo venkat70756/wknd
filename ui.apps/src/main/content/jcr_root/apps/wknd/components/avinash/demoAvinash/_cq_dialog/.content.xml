@@ -31,20 +31,22 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                 fieldDescription="Select the Banner Image"
                                                 fieldLabel="Banner Image"
-                                                name="./bannerImage"/>
+                                                name="./bannerImage"
+                                                required="{Boolean}true"
+                                                rootPath="/content/dam/wknd"/>
                                             <bannerTitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                disabled="{Boolean}true"
                                                 fieldDescription="Enter The Bannner Title"
                                                 fieldLabel="Banner Title"
                                                 name="./bannerTitle"/>
-
-                                             <bannerDescription
+                                            <bannerDescription
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                 fieldLabel="Banner Description"
-                                                name="./bannerDescription"
-                                             />   
+                                                maxlength="{Long}10"
+                                                name="./bannerDescription"/>
                                         </items>
                                     </column>
                                 </items>
