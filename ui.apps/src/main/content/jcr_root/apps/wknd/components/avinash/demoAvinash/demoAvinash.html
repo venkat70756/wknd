@@ -1,26 +1,28 @@
 <sly data-sly-use.clientlibs="/libs/granite/sightly/templates/clientlib.html" />
 <sly data-sly-call="${clientlibs.all @ categories='demo-avinash-libs'}"/>
 
+<sly data-sly-use.model="com.adobe.aem.guides.wknd.core.models.DemoAvinashModel">
+     <!-- <div data-sly-test="${properties.bannerImage && properties.bannerTitle}"> -->
+    <div data-sly-test="${model.bannerImage || model.bannerTitle}">
+      <div class="image-container">
 
- <!-- <div data-sly-test="${properties.bannerImage && properties.bannerTitle}"> -->
-<div data-sly-test="${properties.bannerImage || properties.bannerTitle}"> 
-  <div class="image-container">
-  
-      <img src="${properties.bannerImage}" alt="Sample Image" class="image">
-    
-    <div class="text-overlay">
-      <h2 class="avinash-heading">${properties.bannerTitle}</h2>
-      <p>${properties.bannerDescription}</p>
+          <img src="${model.bannerImage}" alt="Sample Image" class="image">
+
+        <div class="text-overlay">
+          <h2 class="avinash-heading">${model.bannerTitle}</h2>
+          <p>${model.bannerDescription}</p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-${pageProperties['jcr:title']}
+    ${pageProperties['jcr:title']}
 
 
-<div data-sly-include="second.html"></div>
+    <div data-sly-include="second.html"></div>
 
-<div data-sly-resource="${'text' @ resourceType='wknd/components/text'}"></div>
+    <div data-sly-resource="${'text' @ resourceType='wknd/components/text'}"></div>
+
+</sly>
 
 
 <!-- 
