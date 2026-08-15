@@ -5,7 +5,10 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Required;
+import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
+import java.util.List;
 
 
 @Model(adaptables = Resource.class,
@@ -27,6 +30,8 @@ public class DemoDevaModelImpl implements DemoDevaModel {
     private String bannerImage;
 
 
+    @ChildResource
+    private List<DemoDevaMultiModel> bannerTabs;
 
 
     @Override
@@ -43,5 +48,11 @@ public class DemoDevaModelImpl implements DemoDevaModel {
     @Override
     public String getBannerImage() {
         return bannerImage;
+    }
+
+
+    @Override
+    public List<DemoDevaMultiModel> getBannerTabs(){
+        return bannerTabs;
     }
 }

@@ -11,6 +11,13 @@
 
     <img src="${model.bannerImage}" />
 
+    <ul data-sly-list.item="${model.bannerTabs}">
+        <li>
+            <a href="${item.pagePath}.html"> ${item.pageTitle}</a>
+        </li>
+
+    </ul>
+
 </sly>
 
 

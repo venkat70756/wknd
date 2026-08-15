@@ -48,6 +48,37 @@
                                                                     fieldDescription="Select the Banner Image"
                                                                     fieldLabel="Banner Image"
                                                                     name="./bannerImage"/>
+                                                            <bannerTabs
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                    composite="{Boolean}true"
+                                                                    fieldLabel="Banner Tabs">
+                                                                <field
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                        name="./bannerTabs">
+
+                                                                    <items jcr:primaryType="nt:unstructured">
+
+                                                                        <pageTitle
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldDescription="Enter the Page Title"
+                                                                                fieldLabel="Page Title"
+                                                                                name="./pageTitle"/>
+
+                                                                        <pagePath
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                                fieldDescription="Select the Page Path"
+                                                                                fieldLabel="Page Path"
+                                                                                rootPath="/content/wknd"
+                                                                                name="./pagePath"/>
+
+                                                                    </items>
+
+                                                                </field>
+                                                            </bannerTabs>
 
 
                                                         </items>
