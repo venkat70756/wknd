@@ -7,6 +7,8 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Required;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -16,6 +18,8 @@ import java.util.List;
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
 )
 public class DemoDevaModelImpl implements DemoDevaModel {
+
+    private static final Logger log = LoggerFactory.getLogger(DemoDevaModelImpl.class);
 
 
     @ValueMapValue
@@ -36,7 +40,9 @@ public class DemoDevaModelImpl implements DemoDevaModel {
 
     @Override
     public String getBannerTitle() {
+        log.info("Banner Title before transformation: {}", bannerTitle );
         bannerTitle = bannerTitle.toUpperCase();
+        log.info("Banner Title after transformation: {}", bannerTitle );
         return bannerTitle;
     }
 
