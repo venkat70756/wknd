@@ -15,4 +15,6 @@ public interface DemoDevaModel {
 
     public List<DemoDevaMultiModel> getBannerTabs();
 
+    public String getTestName();
+
 }

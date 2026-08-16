@@ -6,9 +6,12 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Required;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.adobe.aem.guides.wknd.core.services.DemoDevaService;
 
 import java.util.List;
 
@@ -38,6 +41,10 @@ public class DemoDevaModelImpl implements DemoDevaModel {
     private List<DemoDevaMultiModel> bannerTabs;
 
 
+    @OSGiService
+    DemoDevaService demoDevaService;
+
+
     @Override
     public String getBannerTitle() {
         log.info("Banner Title before transformation: {}", bannerTitle );
@@ -60,5 +67,10 @@ public class DemoDevaModelImpl implements DemoDevaModel {
     @Override
     public List<DemoDevaMultiModel> getBannerTabs(){
         return bannerTabs;
+    }
+
+    @Override
+    public String getTestName() {
+        return demoDevaService.getMyName();
     }
 }
