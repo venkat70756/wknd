@@ -1,0 +1,140 @@
+.custom-carousel {
+    position: relative;
+    width: 100%;
+    padding: 60px 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.custom-carousel__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.custom-carousel__container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.custom-carousel__title {
+    margin: 0 0 30px;
+    color: #fff;
+    text-align: center;
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.custom-carousel__slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.custom-carousel__track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.custom-carousel__slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.custom-carousel__image {
+    display: block;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Navigation buttons */
+
+.custom-carousel__button {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 45px;
+    height: 45px;
+    transform: translateY(-50%);
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.custom-carousel__button:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.custom-carousel__button--prev {
+    left: 20px;
+}
+
+.custom-carousel__button--next {
+    right: 20px;
+}
+
+/* Dots */
+
+.custom-carousel__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.custom-carousel__dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+.custom-carousel__dot--active {
+    background: #fff;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .custom-carousel {
+        padding: 40px 15px;
+    }
+
+    .custom-carousel__title {
+        font-size: 28px;
+    }
+
+    .custom-carousel__image {
+        height: 300px;
+    }
+
+    .custom-carousel__button {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+    }
+
+    .custom-carousel__button--prev {
+        left: 10px;
+    }
+
+    .custom-carousel__button--next {
+        right: 10px;
+    }
+}

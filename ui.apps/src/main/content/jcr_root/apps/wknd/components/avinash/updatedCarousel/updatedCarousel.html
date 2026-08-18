@@ -1,0 +1,59 @@
+<sly data-sly-use.clientlibs="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlibs.all @ categories='demo-avinash-updated-carousel-libs'}"/>
+
+<sly data-sly-use.model="com.adobe.aem.guides.wknd.core.models.UpdatedCarouselModel"></sly>
+
+<section class="custom-carousel"
+         data-sly-test="${model.carouselTitle}"
+         style="background-image: url('${model.backgroundImage @ context='uri'}');">
+
+    <div class="custom-carousel__overlay"></div>
+
+    <div class="custom-carousel__container">
+
+        <h2 class="custom-carousel__title">
+            ${model.carouselTitle}
+        </h2>
+
+        <div class="custom-carousel__slider">
+
+            <div class="custom-carousel__track"
+                 data-carousel-track>
+
+                <div class="custom-carousel__slide" data-sly-list.item="${model.carouselSlides}" >
+
+                    <img class="custom-carousel__image"
+                         src="${item.carouselSlide @ context='uri'}"
+                         alt="not found"
+                         loading="lazy">
+
+                </div>
+
+            </div>
+
+            <button class="custom-carousel__button custom-carousel__button--prev"
+                    type="button"
+                    aria-label="Previous slide"
+                    data-carousel-prev>
+                &#10094;
+            </button>
+
+            <button class="custom-carousel__button custom-carousel__button--next"
+                    type="button"
+                    aria-label="Next slide"
+                    data-carousel-next>
+                &#10095;
+            </button>
+
+        </div>
+
+        <div class="custom-carousel__dots"
+             data-carousel-dots></div>
+
+    </div>
+</section>
+
+
+
+
+
