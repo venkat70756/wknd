@@ -8,4 +8,6 @@ public interface DemoAvinashModel {
 
     public String getBannerDescription();
 
+    public String getPhoneNumber();
+
 }

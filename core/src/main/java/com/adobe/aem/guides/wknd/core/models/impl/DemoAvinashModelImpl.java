@@ -2,9 +2,11 @@ package com.adobe.aem.guides.wknd.core.models.impl;
 
 import com.adobe.aem.guides.wknd.core.models.DemoAvinashModel;
 
+import com.adobe.aem.guides.wknd.core.services.DemoAvinashService;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +28,9 @@ public class DemoAvinashModelImpl implements DemoAvinashModel{
     @ValueMapValue
     private String bannerDescription;
 
+    @OSGiService
+    DemoAvinashService demoAvinashService;
+
     private static final Logger log = LoggerFactory.getLogger(DemoAvinashModelImpl.class);
 
 
@@ -44,5 +49,11 @@ public class DemoAvinashModelImpl implements DemoAvinashModel{
     @Override
     public String getBannerDescription() {
         return  bannerDescription;
+    }
+
+    @Override
+    public String getPhoneNumber() {
+        String mno = demoAvinashService.getMobileNumber();
+        return mno;
     }
 }
