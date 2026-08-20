@@ -6,6 +6,8 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Model(
         adaptables = Resource.class,
@@ -24,6 +26,8 @@ public class DemoAvinashModelImpl implements DemoAvinashModel{
     @ValueMapValue
     private String bannerDescription;
 
+    private static final Logger log = LoggerFactory.getLogger(DemoAvinashModelImpl.class);
+
 
 
     @Override
@@ -33,6 +37,7 @@ public class DemoAvinashModelImpl implements DemoAvinashModel{
 
     @Override
     public String getBannerTitle() {
+        log.info("Banner Title is: {}", bannerTitle);
         return bannerTitle;
     }
 

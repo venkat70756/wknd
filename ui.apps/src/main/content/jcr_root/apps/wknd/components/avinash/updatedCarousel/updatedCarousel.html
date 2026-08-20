@@ -1,5 +1,5 @@
 <sly data-sly-use.clientlibs="/libs/granite/sightly/templates/clientlib.html" />
-<sly data-sly-call="${clientlibs.all @ categories='demo-avinash-updated-carousel-libs'}"/>
+<sly data-sly-call="${clientlibs.css @ categories='demo-avinash-updated-carousel-libs'}"/>
 
 <sly data-sly-use.model="com.adobe.aem.guides.wknd.core.models.UpdatedCarouselModel"></sly>
 
@@ -54,6 +54,7 @@
 </section>
 
 
-
+<sly data-sly-use.clientlibs="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlibs.js @ categories='demo-avinash-updated-carousel-libs'}"/>
 
 
