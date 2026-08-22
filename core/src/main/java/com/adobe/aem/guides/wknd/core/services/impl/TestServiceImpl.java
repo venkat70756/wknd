@@ -5,16 +5,24 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
+import org.osgi.service.metatype.annotations.Designate;
+import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Component(service = TestService.class, immediate = true)
+//@Designate(ocd = TestConfiguration.class)
+
+@Designate(ocd = TestServiceImpl.Config.class)
 public class TestServiceImpl implements TestService {
 
 
     private static final Logger log = LoggerFactory.getLogger(TestServiceImpl.class);
 
+    @ObjectClassDefinition(name = "Avinash Configuration")
+    public @interface Config{
 
+    }
 
     @Activate
     public void activate(){
