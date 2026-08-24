@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Component(service = TestDevaService.class, immediate = true)
-@Designate(ocd = TestDevaConfiguration.class, factory = true)
+@Designate(ocd = TestDevaConfiguration.class)
 public class TestDevaServiceImpl implements TestDevaService {
 
     private static final Logger log = LoggerFactory.getLogger(TestDevaServiceImpl.class);
