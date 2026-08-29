@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @Component(service = Servlet.class)
 @SlingServletPaths("/bin/pagecreation")
@@ -29,17 +30,35 @@ public class PagesCreationServlet  extends SlingAllMethodsServlet {
         String pageName = request.getParameter("pageName");
         String parentPagePath = request.getParameter("parentPagePath");
 
+        String action = request.getParameter("actionType");
+
+        String deletePagePath = request.getParameter("PagePath");
+
         ResourceResolver resourceResolver = request.getResourceResolver();
 
         PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
 
         try {
 
-            Page page = pageManager.create(parentPagePath,pageName,templatePath,pageTitle);
+            if (action.equals("creation")) {
 
-            resourceResolver.commit();
+                Page page = pageManager.create(parentPagePath, pageName, templatePath, pageTitle);
 
-            LOG.info("Page Created Successfully");
+                resourceResolver.commit();
+
+                LOG.info("Page Created Successfully");
+            } else if (action.equals("deletion")) {
+
+                Page page = pageManager.
+
+            } else if (action.equals("modification")){
+
+            }else {
+                response.setContentType("application/jso");
+                PrintWriter printWriter = response.getWriter();
+
+                printWriter.println("Enter the Action Type");
+            }
 
 
         }catch (Exception e){
