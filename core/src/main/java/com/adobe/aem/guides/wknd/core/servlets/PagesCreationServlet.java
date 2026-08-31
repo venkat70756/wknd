@@ -4,6 +4,7 @@ import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.apache.sling.servlets.annotations.SlingServletPaths;
@@ -29,7 +30,6 @@ public class PagesCreationServlet  extends SlingAllMethodsServlet {
         String pageTitle = request.getParameter("pageTitle");
         String pageName = request.getParameter("pageName");
         String parentPagePath = request.getParameter("parentPagePath");
-
         String action = request.getParameter("actionType");
 
         String deletePagePath = request.getParameter("PagePath");
@@ -49,11 +49,15 @@ public class PagesCreationServlet  extends SlingAllMethodsServlet {
                 LOG.info("Page Created Successfully");
             } else if (action.equals("deletion")) {
 
-                Page page = pageManager.
+                Resource resource = resourceResolver.getResource(deletePagePath);
 
-            } else if (action.equals("modification")){
+                if (resource != null) {
+                    resourceResolver.delete(resource);
 
-            }else {
+                    resourceResolver.commit();
+                }
+
+            } else {
                 response.setContentType("application/jso");
                 PrintWriter printWriter = response.getWriter();
 
