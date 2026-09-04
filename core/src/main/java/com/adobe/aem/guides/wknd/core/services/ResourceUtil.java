@@ -20,9 +20,7 @@ public class ResourceUtil {
         Map<String, Object> param = new HashMap<>();
         param.put(ResourceResolverFactory.SUBSERVICE, "venkat-backend");
 
-
-        return resourceResolverFactory.getResourceResolver(param);
-
+        return resourceResolverFactory.getServiceResourceResolver(param);
 
     }
 }
