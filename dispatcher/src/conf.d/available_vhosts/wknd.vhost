@@ -1,0 +1,44 @@
+Include conf.d/variables/custom.vars
+
+<VirtualHost *:80>
+	ServerName	"wknd.tel"
+
+	DocumentRoot "${DOCROOT}"
+
+	AllowEncodedSlashes NoDecode
+
+	<IfModule mod_headers.c>
+		Header add X-Vhost "wknd.tel"
+	</IfModule>
+	<Directory />
+		<IfModule disp_apache2.c>
+
+			ModMimeUsePathInfo On
+
+			DirectorySlash Off
+			SetHandler dispatcher-handler
+		</IfModule>
+		Options FollowSymLinks
+		AllowOverride None
+
+		SetOutputFilter DEFLATE
+
+		SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+
+		Header always append X-Frame-Options SAMEORIGIN
+	</Directory>
+	<Directory "${DOCROOT}">
+		AllowOverride None
+		Require all granted
+	</Directory>
+	<IfModule disp_apache2.c>
+
+		DispatcherUseProcessedURL	On
+
+		DispatcherPassError		0
+	</IfModule>
+	<IfModule mod_rewrite.c>
+		RewriteEngine	on
+		Include conf.d/rewrites/wknd.rules
+	</IfModule>
+</VirtualHost>
