@@ -23,3 +23,4 @@ RewriteCond %{REQUEST_URI} !^/var
 RewriteCond %{REQUEST_URI} !^/conf/(.+\.jpe?g|.+\.png|.+\.svg)$
 RewriteCond %{REQUEST_URI} (.html|.jpe?g|.png|.svg)$
 RewriteRule ^/(.*)$ /content/${CONTENT_FOLDER_NAME}/$1 [PT,L]
+RewriteRule ^/?about$ /content/wknd/us/en/about-us.html [R=301,L]
