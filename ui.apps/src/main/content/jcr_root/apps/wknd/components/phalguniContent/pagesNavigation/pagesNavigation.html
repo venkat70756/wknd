@@ -1,0 +1,18 @@
+<sly data-sly-use.clientlibs="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlibs.css @ categories='pages-naviagation'}" />
+
+
+<h1>Pages Navigation</h1>
+
+<div class="page-selector">
+    <label for="pageDropdown">Select a Page:</label>
+
+    <select id="pageDropdown">
+        <option value="">-- Select a Page --</option>
+    </select>
+</div>
+
+
+
+<sly data-sly-use.clientlibs="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlibs.js @ categories='pages-naviagation'}" />

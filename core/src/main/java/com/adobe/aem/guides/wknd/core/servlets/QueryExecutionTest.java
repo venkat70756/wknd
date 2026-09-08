@@ -60,7 +60,7 @@ public class QueryExecutionTest extends SlingSafeMethodsServlet {
                     String author = node.getProperty("author").getString();
 
                     if (author != null && !author.isEmpty()) {
-
+                        page.put("Author", author);
                     }
                 }
 
