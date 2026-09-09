@@ -1,0 +1,28 @@
+<sly data-sly-use.clientlibs="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlibs.css @ categories='pages-navigation-avinash-libs'}"/>
+
+
+
+<div class="page-selector">
+    <label for="pageSelector">Select a page</label>
+
+    <select id="pageSelector" class="page-selector__dropdown">
+        <option value="">-- Select a page --</option>
+    </select>
+
+    <span id="pageSelectorLoading" class="page-selector__loading">
+        Loading...
+    </span>
+
+    <p id="pageSelectorError" class="page-selector__error"></p>
+</div>
+
+
+
+<sly data-sly-use.clientlibs="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlibs.js @ categories='pages-navigation-avinash-libs'}"/>
+
+
+
+
+

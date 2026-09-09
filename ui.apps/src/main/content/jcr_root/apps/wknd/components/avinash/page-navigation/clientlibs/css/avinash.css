@@ -1,0 +1,47 @@
+.page-selector {
+    max-width: 400px;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+.page-selector label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.page-selector__dropdown {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+}
+
+.page-selector__dropdown:hover {
+    border-color: #888;
+}
+
+.page-selector__dropdown:focus {
+    outline: none;
+    border-color: #1473e6;
+    box-shadow: 0 0 0 2px rgba(20, 115, 230, 0.2);
+}
+
+.page-selector__loading {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #777;
+}
+
+.page-selector__error {
+    margin-top: 8px;
+    color: #d7373f;
+    font-size: 14px;
+}
