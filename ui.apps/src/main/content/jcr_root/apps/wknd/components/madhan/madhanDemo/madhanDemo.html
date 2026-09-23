@@ -1,11 +1,16 @@
 <sly data-sly-use.venkat="${'/libs/granite/sightly/templates/clientlib.html'}" 
  data-sly-call="${venkat.css @ categories='madhan-demo-libs'}"/>
 
-<h1 class="madhan-comp"> ${properties.madhanTitle}</h1>
+<div style="height:${properties.compHeight @ context='styleString'}px;">
 
-<p>${properties.madhanDescription}</p>
 
-<p>Mobile Number: <b>${properties.mobileNumber}</b></p>
+    <h1 class="madhan-comp"> ${properties.madhanTitle}</h1>
+
+    <p>${properties.madhanDescription}</p>
+
+    <p>Mobile Number: <b>${properties.mobileNumber}</b></p>
+
+</div>
 
 
 <sly data-sly-use.venkat="${'/libs/granite/sightly/templates/clientlib.html'}" 
