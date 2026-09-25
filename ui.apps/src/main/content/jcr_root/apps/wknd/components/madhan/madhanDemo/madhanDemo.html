@@ -1,16 +1,22 @@
 <sly data-sly-use.venkat="${'/libs/granite/sightly/templates/clientlib.html'}" 
  data-sly-call="${venkat.css @ categories='madhan-demo-libs'}"/>
 
-<div style="height:${properties.compHeight @ context='styleString'}px;">
+
+<sly data-sly-use.model="com.adobe.aem.guides.wknd.core.models.MadhanDemoModel">
+
+    <h1>My Name: <b> ${model.myName}</b></h1>
+    <div style="height:${model.compHeight @ context='styleString'}px;">
 
 
-    <h1 class="madhan-comp"> ${properties.madhanTitle}</h1>
+        <h1 class="madhan-comp"> ${model.madhanTitle}</h1>
 
-    <p>${properties.madhanDescription}</p>
 
-    <p>Mobile Number: <b>${properties.mobileNumber}</b></p>
+        <p>${model.madhanDescription}</p>
 
-</div>
+        <p>Mobile Number: <b>${model.mobileNumber}</b></p>
+
+    </div>
+</sly>
 
 
 <sly data-sly-use.venkat="${'/libs/granite/sightly/templates/clientlib.html'}" 
