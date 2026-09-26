@@ -18,7 +18,7 @@
                         fieldLabel="Madhan Title"
                         maxlength="{Long}10"
                         name="./madhanTitle"
-                        required="{Boolean}true"/>
+                        required="{Boolean}false"/>
                     <madhanDescription
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
@@ -31,13 +31,43 @@
                         fieldDescription="Enter your Mobile Number"
                         fieldLabel="Mobile Number"
                         name="./mobileNumber"/>
-
                     <compHeight
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
                         fieldDescription="Enter the componenet height"
                         fieldLabel="Componenet Height"
                         name="./compHeight"/>
+                    <contact
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        composite="{Boolean}true">
+                        <field
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        name="./contact"
+                        >
+                            <items jcr:primaryType="nt:unstructured">
+                                <contactName
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                    
+                                    fieldLabel="Contact Name"
+                                    name="./contactName"/>
+                                <contactEmail
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Enter Contact Email"
+                                    fieldLabel="Contact Email"
+                                    name="./contactEmail"/>
+                                <!-- <hideEmail
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                    fieldDescription="Check to hide the contact Email"
+                                    fieldLabel="Hide Email"
+                                    name="./hideEmail"/> -->
+                            </items>
+                        </field>
+                    </contact>
                 </items>
             </column>
         </items>

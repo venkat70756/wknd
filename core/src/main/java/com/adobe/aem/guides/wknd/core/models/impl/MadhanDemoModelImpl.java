@@ -4,8 +4,10 @@ import com.adobe.aem.guides.wknd.core.models.MadhanDemoModel;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.Required;
+import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
+import java.util.List;
 
 @Model(adaptables = Resource.class,
         adapters = MadhanDemoModel.class,
@@ -25,6 +27,9 @@ public class MadhanDemoModelImpl implements MadhanDemoModel {
 
     @ValueMapValue
     private String compHeight;
+
+    @ChildResource
+    private List<MadhanDemoMultiModel> contact;
 
 
 
@@ -54,5 +59,10 @@ public class MadhanDemoModelImpl implements MadhanDemoModel {
     @Override
     public String getMyName() {
         return myName;
+    }
+
+    @Override
+    public List<MadhanDemoMultiModel> getContact() {
+        return  contact;
     }
 }

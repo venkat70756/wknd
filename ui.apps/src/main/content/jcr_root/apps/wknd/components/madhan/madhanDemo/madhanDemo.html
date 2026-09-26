@@ -13,9 +13,32 @@
 
         <p>${model.madhanDescription}</p>
 
-        <p>Mobile Number: <b>${model.mobileNumber}</b></p>
+        <p data-sly-test="${model.mobileNumber}">Mobile Number: <b>${model.mobileNumber}</b></p>
 
-    </div>
+    </div> <br>
+
+    <sly data-sly-include="${'venkat.html'}"/>
+
+    ============================ Data sly List Example start ============================ <br>
+    Contact Details:
+    <ul data-sly-list.c="${model.contact}">
+        <li data-sly-test="${c.contactName}">Contact Name: <b>${c.contactName}</b></li>
+        
+        <li data-sly-test="${c.contactEmail}">Contact Email: <b>${c.contactEmail}</b></li>
+    </ul> <br>
+
+     ============================ Data sly List Example End ============================ <br>
+
+
+     ============================ Data sly Repeat Example start ============================ <br>
+
+    <ul data-sly-repeat.c="${model.contact}">
+        <li data-sly-test="${c.contactName}">Contact Name: <b>${c.contactName}</b></li>
+        
+        <li data-sly-test="${c.contactEmail}">Contact Email: <b>${c.contactEmail}</b></li>
+    </ul> <br>
+
+
 </sly>
 
 
