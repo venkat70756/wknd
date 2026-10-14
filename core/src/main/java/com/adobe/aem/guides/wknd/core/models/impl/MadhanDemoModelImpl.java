@@ -8,6 +8,8 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -16,6 +18,8 @@ import java.util.List;
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
 )
 public class MadhanDemoModelImpl implements MadhanDemoModel {
+
+    private static final Logger log = LoggerFactory.getLogger(MadhanDemoModelImpl.class);
 
     @ValueMapValue
     private String madhanTitle;
@@ -43,6 +47,12 @@ public class MadhanDemoModelImpl implements MadhanDemoModel {
 
     @Override
     public String getMadhanTitle() {
+        log.trace("Log level is Tracing");
+        log.debug("Log level is Debug");
+        log.info("Log level is Info");
+        log.warn("Log level is Warning");
+        log.error("Log level is Error");
+        log.info(madhanTitle);
         return madhanTitle;
     }
 
