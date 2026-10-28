@@ -2,6 +2,7 @@ package com.adobe.aem.guides.wknd.core.models.impl;
 
 import com.adobe.aem.guides.wknd.core.models.MadhanDemoModel;
 import com.adobe.aem.guides.wknd.core.services.DemoMadhanService;
+import com.adobe.aem.guides.wknd.core.services.MadhanBundlesService;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
@@ -40,6 +41,8 @@ public class MadhanDemoModelImpl implements MadhanDemoModel {
     @OSGiService
     DemoMadhanService demoMadhanService;
 
+    @OSGiService
+    MadhanBundlesService madhanBundlesService;
 
 
 
@@ -73,7 +76,7 @@ public class MadhanDemoModelImpl implements MadhanDemoModel {
 
     @Override
     public String getMyName() {
-        return demoMadhanService.getMyName();
+        return madhanBundlesService.getStudentName();
     }
 
     @Override
